@@ -44,8 +44,12 @@ columns = [
 data_table = DataTable(source=source, columns=columns, width=800, height=600,
                        margin=(25, 25, 25, 25))
 
+hyperlink_div = Div(
+    text="""<a href="https://dataviz.dustincremascoli.com">Go back to Data Visualizations Main Page</a>""",
+    width=400, height=25
+    )
 
-curdoc().add_root(column(desc))
+curdoc().add_root(column(desc, hyperlink_div))
 
 doc = renderer.server_doc(layout)
 doc.title = 'GeoViews App'
