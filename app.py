@@ -28,7 +28,7 @@ title = "US Cities: Significant Decreases In Hourly Barometric Pressure Bubble M
 layout = tiles * points.opts(title=title, color='Total Days',
                              cmap='viridis', size=dim('Total Days')*0.5,
                              tools=['hover'], global_extent=False,
-                             width=800, height=600)
+                             width=1000, height=800)
 
 source = ColumnDataSource(cities)
 
@@ -43,6 +43,11 @@ columns = [
 
 data_table = DataTable(source=source, columns=columns, width=800, height=600,
                        margin=(5, 25, 25, 25))
+
+hyperlink_github = Div(
+    text="""<p><i>To see the full codebase for this interactive web-based visualization: </i><a href="https://github.com/dcremas/geo-views">Link to my github account</a></p>""",
+    width=800, height=25, margin=(10, 10, 10, 25)
+    )
 
 hyperlink_div = Div(
     text="""<a href="https://dataviz.dustincremascoli.com">Go back to Data Visualizations Main Page</a>""",
@@ -62,7 +67,7 @@ button.js_on_event(
     ),
 )
 
-curdoc().add_root(column(desc, hyperlink_div))
+curdoc().add_root(column(desc, hyperlink_github, hyperlink_div))
 
 doc = renderer.server_doc(layout)
 doc.title = 'GeoViews App'
